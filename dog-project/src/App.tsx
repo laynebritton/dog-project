@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 import { getRandomDog } from "./api/dog-api";
+import AnimalFrame from "./components/AnimalFrame/AnimalFrame";
 
 function App() {
-  const [imageUrl, setImageUrl] = useState();
+  const [imageUrl, setImageUrl] = useState<string>("");
 
   useEffect(() => {
     // let mounted = true;
@@ -21,7 +22,8 @@ function App() {
   return (
     <>
       <Home></Home>
-      {{ imageUrl } && <img src={imageUrl}></img>}
+      {/* {{ imageUrl } && <img src={imageUrl}></img>} */}
+      <AnimalFrame imageUrl={imageUrl}></AnimalFrame>
     </>
   );
 }
