@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Carousel } from "react-bootstrap";
 import { getRandomDogs } from "../../api/dog-api";
 import AnimalFrame from "../../components/AnimalFrame/AnimalFrame";
 import { Dog } from "../../interfaces/dog";
@@ -21,10 +21,21 @@ const Home: FC<HomeProps> = () => {
 
   return (
     <div className={styles.Home} data-testid="Home">
-      <Container>
+      <Container fluid className={styles.carousel_spacing}>
+        <Carousel variant="dark">
+          {dogs &&
+            dogs.map((dog) => (
+              <Carousel.Item>
+                <img className={styles.carousel_image} src={dog.image_url} />
+              </Carousel.Item>
+            ))}
+        </Carousel>
+        <Row></Row>
         <Row>
           <Col xs="1" sm="2"></Col>
-          <Col xs="10" sm="8"></Col>
+          <Col xs="10" sm="8">
+            
+          </Col>
         </Row>
       </Container>
     </div>
