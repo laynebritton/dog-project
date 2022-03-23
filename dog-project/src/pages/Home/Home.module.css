@@ -10,6 +10,7 @@
 }
 
 .carousel_spacing {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  /* TODO LAYNE: Use SCSS to make this a media query on mobile */
+  /* padding-left: 0 !important;
+  padding-right: 0 !important; */
 }
