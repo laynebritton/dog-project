@@ -18,22 +18,22 @@ const Home: FC<HomeProps> = () => {
           <Col xs="10" sm="8">
             <Card>
               <Card.Body>
-                <Card.Title>Watch an endless stream of dogs</Card.Title>
-                <Card.Subtitle>Featured Dogs Below</Card.Subtitle>
+                <Card.Title>Welcome to infinite dogs</Card.Title>
+                <Card.Subtitle>Keep Scrolling to see more pups</Card.Subtitle>
               </Card.Body>
             </Card>
+            <br />
           </Col>
         </Row>
         <Row>
           <Col className="d-none d-sm-block" sm="2"></Col>
           <Col xs="12" sm="8">
-            <FeaturedCarousel />
+            {/* <FeaturedCarousel /> */}
           </Col>
         </Row>
         <Row>
           <Col xs="1" sm="2"></Col>
           <Col xs="10" sm="8">
-            <h1>Scroll for infinite dogs</h1>
             <Row>
               <InfiniteDogs />
             </Row>
