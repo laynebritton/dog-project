@@ -52,7 +52,7 @@ const Home: FC<HomeProps> = () => {
         <Row>
           <Col xs="1" sm="2"></Col>
           <Col xs="10" sm="8">
-            <h1>Keep scrolling to see more dogs</h1>
+            <h1>Scroll for infinite dogs</h1>
             <Row>
               <InfiniteDogs />
             </Row>
