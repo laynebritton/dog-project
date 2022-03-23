@@ -24,7 +24,7 @@ const Navigation: FC<NavigationProps> = () => (
               Separated link
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="about">Our Mission</Nav.Link>
+          <Nav.Link href={ROUTES.ABOUT}>Our Mission</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>

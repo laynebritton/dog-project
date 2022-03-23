@@ -1,18 +1,21 @@
 import React, { FC, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { getRandomDog } from "../../api/dog-api";
+import { getRandomDogs } from "../../api/dog-api";
 import AnimalFrame from "../../components/AnimalFrame/AnimalFrame";
-import Navigation from "../../components/Navigation/Navigation";
+import { Dog } from "../../interfaces/dog";
 import styles from "./Home.module.css";
 
 interface HomeProps {}
 
+const ACCORDION_DOG_COUNT = 4;
+
 const Home: FC<HomeProps> = () => {
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [dogs, setDogs] = useState<Dog[]>();
 
   useEffect(() => {
-    getRandomDog().then((dog) => {
-      setImageUrl(dog);
+    getRandomDogs(ACCORDION_DOG_COUNT).then((dogs) => {
+      setDogs(dogs);
+      console.log(dogs);
     });
   }, []);
 
@@ -21,12 +24,7 @@ const Home: FC<HomeProps> = () => {
       <Container>
         <Row>
           <Col xs="1" sm="2"></Col>
-          <Col xs="10" sm="8">
-            <AnimalFrame imageUrl={imageUrl}></AnimalFrame>
-            <AnimalFrame imageUrl={imageUrl}></AnimalFrame>
-            <AnimalFrame imageUrl={imageUrl}></AnimalFrame>
-
-          </Col>
+          <Col xs="10" sm="8"></Col>
         </Row>
       </Container>
     </div>

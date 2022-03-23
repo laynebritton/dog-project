@@ -6,15 +6,17 @@ import { getRandomDog } from "./api/dog-api";
 import AnimalFrame from "./components/AnimalFrame/AnimalFrame";
 import Navigation from "./components/Navigation/Navigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import * as ROUTES from "./util/Routes";
+import About from "./pages/About/About";
 
 function App() {
   return (
-    <div >
+    <div>
       <Navigation />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<h1>implement about</h1>} />
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.ABOUT} element={<About />} />
 
           <Route path="*" element={<h1>404 page not found</h1>} />
         </Routes>
