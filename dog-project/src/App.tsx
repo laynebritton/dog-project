@@ -4,27 +4,22 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import { getRandomDog } from "./api/dog-api";
 import AnimalFrame from "./components/AnimalFrame/AnimalFrame";
+import Navigation from "./components/Navigation/Navigation";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [imageUrl, setImageUrl] = useState<string>("");
-
-  useEffect(() => {
-    // let mounted = true;
-    getRandomDog().then((dog) => {
-      // if (mounted) {
-      setImageUrl(dog);
-      // }
-    });
-    // return () => (mounted = false);
-  }, []);
-
-  console.log(imageUrl);
   return (
-    <>
-      <Home></Home>
-      {/* {{ imageUrl } && <img src={imageUrl}></img>} */}
-      <AnimalFrame imageUrl={imageUrl}></AnimalFrame>
-    </>
+    <div >
+      <Navigation />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<h1>implement about</h1>} />
+
+          <Route path="*" element={<h1>404 page not found</h1>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
