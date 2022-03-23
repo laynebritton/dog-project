@@ -35,7 +35,7 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
         loader={<h4>Loading ...</h4>}
         dataLength={infiniteDogs.length}
       >
-        <Container fluid>
+        <Container fluid className={styles.inner_container}>
           <Row>
             {infiniteDogs &&
               infiniteDogs.map((dog) => (
