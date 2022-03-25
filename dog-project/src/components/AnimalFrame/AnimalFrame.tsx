@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { Card } from "react-bootstrap";
-import styles from "./AnimalFrame.module.css";
+import React, { FC } from 'react';
+import { Card } from 'react-bootstrap';
+import styles from './AnimalFrame.module.css';
 
 interface AnimalFrameProps {
   imageUrl: string;

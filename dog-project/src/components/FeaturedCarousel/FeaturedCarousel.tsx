@@ -1,8 +1,8 @@
-import React, { FC, useEffect, useState } from "react";
-import { Carousel } from "react-bootstrap";
-import { getRandomDogs } from "../../api/dog-api";
-import { Dog } from "../../interfaces/dog";
-import styles from "./FeaturedCarousel.module.css";
+import React, { FC, useEffect, useState } from 'react';
+import { Carousel } from 'react-bootstrap';
+import { getRandomDogs } from '../../api/dog-api';
+import { Dog } from '../../interfaces/dog';
+import styles from './FeaturedCarousel.module.css';
 
 interface FeaturedCarouselProps {}
 

@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Home from "./pages/Home/Home";
-import { getRandomDog } from "./api/dog-api";
-import AnimalFrame from "./components/AnimalFrame/AnimalFrame";
-import Navigation from "./components/Navigation/Navigation";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import * as ROUTES from "./util/Routes";
-import About from "./pages/About/About";
+import './App.css';
+import Home from './pages/Home/Home';
+import Navigation from './components/Navigation/Navigation';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import * as ROUTES from './util/Routes';
+import About from './pages/About/About';
 
 function App() {
   return (

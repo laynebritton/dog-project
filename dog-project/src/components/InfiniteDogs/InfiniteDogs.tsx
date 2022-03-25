@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
-import { Container, Col, Row } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { getRandomDogs } from "../../api/dog-api";
-import { Dog } from "../../interfaces/dog";
-import AnimalFrame from "../AnimalFrame/AnimalFrame";
-import styles from "./InfiniteDogs.module.css";
+import React, { FC, useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import AnimalFrame from '../AnimalFrame/AnimalFrame';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { getRandomDogs } from '../../api/dog-api';
+import { Dog } from '../../interfaces/dog';
+import styles from './InfiniteDogs.module.css';
 
 interface InfiniteDogsProps {}
 const INFINITE_DOG_LOAD_COUNT = 49;
@@ -18,19 +18,19 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
     });
   }, []);
 
-  const fetch_additional_dogs = () => {
+  const fetchAdditionalDogs = () => {
     getRandomDogs(INFINITE_DOG_LOAD_COUNT).then((dogs) => {
       const temp = infiniteDogs.concat(dogs);
       console.log(temp);
       setInfiniteDogs(temp);
     });
-    console.log("fetching!");
+    console.log('fetching!');
   };
 
   return (
     <>
       <InfiniteScroll
-        next={fetch_additional_dogs}
+        next={fetchAdditionalDogs}
         hasMore={true}
         loader={<h4>Loading ...</h4>}
         dataLength={infiniteDogs.length}
@@ -39,7 +39,7 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
           <Row>
             {infiniteDogs &&
               infiniteDogs.map((dog) => (
-                <Col xs="12" sm="4">
+                <Col key={dog.image_url} xs="12" sm="4">
                   <AnimalFrame imageUrl={dog.image_url} />
                 </Col>
               ))}
