@@ -5,16 +5,15 @@ const DOG_COUNT_URL_PLACEHOLDER = '[COUNT]';
 
 const DOG_API_BASE_URL = 'https://dog.ceo/api';
 
-
-const DOG_API_RANDOM_URL = '/breeds/image/random';
-const DOG_API_BY_BREED_RANDOM_URL =
+const DOG_API_RANDOM_ENDPOINT = '/breeds/image/random';
+const DOG_API_BY_BREED_RANDOM_ENDPOINT =
   '/breed/' +
   DOG_BREED_URL_PLACEHOLDER +
   '/images/random/' +
   DOG_COUNT_URL_PLACEHOLDER;
 
 export const getRandomDog = async (): Promise<Dog> => {
-  const requestUrl = DOG_API_BASE_URL + DOG_API_RANDOM_URL;
+  const requestUrl = DOG_API_BASE_URL + DOG_API_RANDOM_ENDPOINT;
   const response = await fetch(requestUrl);
   const jsonResponse = await response.json();
 
@@ -23,7 +22,7 @@ export const getRandomDog = async (): Promise<Dog> => {
 };
 
 export const getRandomDogs = async (count: number): Promise<Dog[]> => {
-  const requestUrl = DOG_API_BASE_URL + DOG_API_RANDOM_URL + '/' + count;
+  const requestUrl = DOG_API_BASE_URL + DOG_API_RANDOM_ENDPOINT + '/' + count;
   return getDogsFromUrl(requestUrl);
 };
 
@@ -31,7 +30,7 @@ export const getRandomDogsByBreed = async (
   breed: string,
   count: number
 ): Promise<Dog[]> => {
-  let requestUrl = DOG_API_BASE_URL + DOG_API_BY_BREED_RANDOM_URL;
+  let requestUrl = DOG_API_BASE_URL + DOG_API_BY_BREED_RANDOM_ENDPOINT;
   requestUrl = requestUrl.replace(DOG_BREED_URL_PLACEHOLDER, breed);
   requestUrl = requestUrl.replace(DOG_COUNT_URL_PLACEHOLDER, count.toString());
 
