@@ -1,4 +1,4 @@
-import { Dog } from '../interfaces/dog';
+import { Dog, DogBreed } from '../interfaces/dog';
 
 const DOG_BREED_URL_PLACEHOLDER = '[BREED]';
 const DOG_COUNT_URL_PLACEHOLDER = '[COUNT]';
@@ -11,6 +11,8 @@ const DOG_API_BY_BREED_RANDOM_ENDPOINT =
   DOG_BREED_URL_PLACEHOLDER +
   '/images/random/' +
   DOG_COUNT_URL_PLACEHOLDER;
+
+const DOG_BREED_LIST_ENDPOINT = '/breeds/list/all';
 
 export const getRandomDog = async (): Promise<Dog> => {
   const requestUrl = DOG_API_BASE_URL + DOG_API_RANDOM_ENDPOINT;
@@ -37,6 +39,13 @@ export const getRandomDogsByBreed = async (
   return getDogsFromUrl(requestUrl);
 };
 
+export const getDogBreedList = async () => {
+  const requestUrl = DOG_API_BASE_URL + DOG_BREED_LIST_ENDPOINT;
+  const response = await fetch(requestUrl);
+  const jsonResponse = await response.json();
+  return generateDogBreeds(jsonResponse.message);
+};
+
 const getDogsFromUrl = async (requestUrl: string): Promise<Dog[]> => {
   const response = await fetch(requestUrl);
   const jsonResponse = await response.json();
@@ -53,4 +62,29 @@ const generateDog = (imageUrl: string): Dog => {
     image_url: imageUrl
   };
   return parsedDog;
+};
+
+const generateDogBreeds = (list: {}): DogBreed[] => {
+  const breeds: DogBreed[] = [];
+  for (const [key, value] of Object.entries(list)) {
+    const dogBreed: DogBreed = {
+      name: key,
+      subBreeds: []
+    };
+
+    const breedValues = value as string[];
+
+    if (breedValues.length > 0) {
+      breedValues.forEach((breed) => {
+        const subBreed: DogBreed = {
+          name: breed,
+          subBreeds: []
+        };
+        dogBreed.subBreeds.push(subBreed);
+      });
+    }
+
+    breeds.push(dogBreed);
+  }
+  return breeds;
 };
