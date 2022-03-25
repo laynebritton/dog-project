@@ -67,24 +67,26 @@ const generateDog = (imageUrl: string): Dog => {
 const generateDogBreeds = (list: {}): DogBreed[] => {
   const breeds: DogBreed[] = [];
   for (const [key, value] of Object.entries(list)) {
-    const dogBreed: DogBreed = {
-      name: key,
-      subBreeds: []
-    };
-
-    const breedValues = value as string[];
-
-    if (breedValues.length > 0) {
-      breedValues.forEach((breed) => {
-        const subBreed: DogBreed = {
-          name: breed,
-          subBreeds: []
-        };
-        dogBreed.subBreeds.push(subBreed);
-      });
-    }
-
-    breeds.push(dogBreed);
+    breeds.push(generateDogBreed(key, value as string[]));
   }
   return breeds;
+};
+
+const generateDogBreed = (breed: string, subBreeds: string[]): DogBreed => {
+  const dogBreed: DogBreed = {
+    name: breed,
+    subBreeds: []
+  };
+
+  if (subBreeds.length > 0) {
+    subBreeds.forEach((breed) => {
+      const subBreed: DogBreed = {
+        name: breed,
+        subBreeds: []
+      };
+      dogBreed.subBreeds.push(subBreed);
+    });
+  }
+
+  return dogBreed;
 };
