@@ -1,11 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
-import { Container, Row, Col, Carousel, Card, Image } from "react-bootstrap";
-import { getRandomDogs } from "../../api/dog-api";
-import AnimalFrame from "../../components/AnimalFrame/AnimalFrame";
-import FeaturedCarousel from "../../components/FeaturedCarousel/FeaturedCarousel";
-import InfiniteDogs from "../../components/InfiniteDogs/InfiniteDogs";
-import { Dog } from "../../interfaces/dog";
-import styles from "./Home.module.css";
+import { FC } from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import InfiniteDogs from '../../components/InfiniteDogs/InfiniteDogs';
+import styles from './Home.module.css';
 
 interface HomeProps {}
 

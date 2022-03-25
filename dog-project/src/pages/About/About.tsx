@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { getRandomDog } from "../../api/dog-api";
+import React, { FC, useEffect, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { getRandomDog } from '../../api/dog-api';
 
-import AnimalFrame from "../../components/AnimalFrame/AnimalFrame";
-import { Dog } from "../../interfaces/dog";
+import AnimalFrame from '../../components/AnimalFrame/AnimalFrame';
+import { Dog } from '../../interfaces/dog';
 
 interface AboutProps {}
 
@@ -32,7 +32,7 @@ const About: FC<AboutProps> = () => {
             )}
           </Col>
         </Row>
-      </Container>{" "}
+      </Container>{' '}
     </>
   );
 };

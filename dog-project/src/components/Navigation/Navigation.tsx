@@ -1,7 +1,6 @@
-import React, { FC } from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import * as ROUTES from "../../util/Routes";
-import styles from "./Navigation.module.css";
+import React, { FC } from 'react';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import * as ROUTES from '../../util/Routes';
 
 interface NavigationProps {}
 
