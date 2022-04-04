@@ -69,6 +69,12 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
                 }}
               >
                 {breed.name}
+                {breed.subBreeds.length > 0 &&
+                  breed.subBreeds.map((subBreed) => (
+                    <Dropdown.Item key={subBreed.name}>
+                      {subBreed.name}
+                    </Dropdown.Item>
+                  ))}
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>
