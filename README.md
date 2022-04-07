@@ -20,7 +20,7 @@ Leverages [Dog API](https://dog.ceo/dog-api/)
  4. Run `npm start` to start local dev server
  5. View in browser at http://localhost:3000/dog-project
 
---
+---
 
 ## Extensions and Dev Environment
 
