@@ -2,6 +2,10 @@
 
 Infinitely scrolling dogs.
 
+Check it out [here, hosted on Github Pages](https://laynebritton.github.io/dog-project/)
+
+---
+
 Built in React TypeScript.
 
 Leverages [Dog API](https://dog.ceo/dog-api/)
