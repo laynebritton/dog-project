@@ -19,3 +19,12 @@ Leverages [Dog API](https://dog.ceo/dog-api/)
  3. Run `npm ci` to install node_modules
  4. Run `npm start` to start local dev server
  5. View in browser at http://localhost:3000/dog-project
+
+--
+
+## Extensions and Dev Environment
+
+I recommend using [Visual Studio Code](https://code.visualstudio.com) for development.
+
+This project follows and enforces, using eslint, the [Prettier code formatting standards](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode). 
+It is highly recommended to install that extension for easy code formatting.
