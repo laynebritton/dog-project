@@ -8,7 +8,7 @@ import {
   getDogBreedList
 } from '../../api/dog-api';
 import { Dog, DogBreed } from '../../interfaces/dog';
-import styles from './InfiniteDogs.module.css';
+import styles from './InfiniteDogs.module.scss';
 
 interface InfiniteDogsProps {}
 const INFINITE_DOG_LOAD_COUNT = 49;
@@ -56,9 +56,9 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
   return (
     <>
       {dogBreeds && (
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dog Breeds
+        <Dropdown className={styles.breed_dropdown}>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            Sort by dog breed
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {dogBreeds.map((breed) => (
@@ -69,12 +69,6 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
                 }}
               >
                 {breed.name}
-                {breed.subBreeds.length > 0 &&
-                  breed.subBreeds.map((subBreed) => (
-                    <Dropdown.Item key={subBreed.name}>
-                      {subBreed.name}
-                    </Dropdown.Item>
-                  ))}
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>
