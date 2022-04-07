@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Col, Container, Dropdown, Row } from 'react-bootstrap';
+import { Col, Container, Dropdown, Row, Spinner } from 'react-bootstrap';
 import AnimalFrame from '../AnimalFrame/AnimalFrame';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {
@@ -77,7 +77,11 @@ const InfiniteDogs: FC<InfiniteDogsProps> = () => {
       <InfiniteScroll
         next={fetchAdditionalDogs}
         hasMore={true}
-        loader={<h4>Loading ...</h4>}
+        loader={
+          <Spinner animation="border" role="status" variant="primary">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        }
         dataLength={infiniteDogs.length}
       >
         <Container fluid className={styles.inner_container}>
