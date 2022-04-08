@@ -12,6 +12,7 @@ const Navigation: FC<NavigationProps> = () => (
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href={ROUTES.HOME}>Home</Nav.Link>
+          <Nav.Link href={ROUTES.PARADE}>Parade</Nav.Link>
           {/* <NavDropdown title="Parade" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Start</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
