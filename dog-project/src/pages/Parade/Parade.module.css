@@ -4,7 +4,7 @@
 
 .parade_body {
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .parade_animal {

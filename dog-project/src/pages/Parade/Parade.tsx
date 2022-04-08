@@ -90,7 +90,10 @@ const Parade: FC<ParadeProps> = () => {
   }, [paradeDogs]);
 
   return (
-    <div className={styles.parade_body}>
+    <div
+      className={styles.parade_body}
+      style={{ width: width + 'px', height: height - 56 + 'px' }}
+    >
       {paradeDogs.map((paradeDog) => (
         <div
           style={{ left: paradeDog.x + 'px', top: paradeDog.y + 'px' }}
