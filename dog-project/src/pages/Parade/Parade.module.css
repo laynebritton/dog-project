@@ -2,8 +2,9 @@
   color: #ffffff;
 }
 
-body {
-  overflow: hidden; /* Hide scrollbars */
+.parade_body {
+  position: relative;
+  /* overflow: hidden; */
 }
 
 .parade_animal {

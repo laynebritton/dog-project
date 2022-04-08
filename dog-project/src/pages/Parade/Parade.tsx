@@ -90,7 +90,7 @@ const Parade: FC<ParadeProps> = () => {
   }, [paradeDogs]);
 
   return (
-    <>
+    <div className={styles.parade_body}>
       {paradeDogs.map((paradeDog) => (
         <div
           style={{ left: paradeDog.x + 'px', top: paradeDog.y + 'px' }}
@@ -100,7 +100,7 @@ const Parade: FC<ParadeProps> = () => {
           <AnimalFrame imageUrl={paradeDog.dog.image_url} />
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
