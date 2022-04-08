@@ -2,6 +2,10 @@
   color: #ffffff;
 }
 
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
 .parade_animal {
   position: absolute;
   width: 30%;
