@@ -100,9 +100,6 @@ const Parade: FC<ParadeProps> = () => {
           <AnimalFrame imageUrl={paradeDog.dog.image_url} />
         </div>
       ))}
-      <div className={styles.Parade}>
-        width: {width} ~ height: {height}
-      </div>
     </>
   );
 };
