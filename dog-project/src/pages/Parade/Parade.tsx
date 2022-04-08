@@ -54,12 +54,18 @@ const Parade: FC<ParadeProps> = () => {
 
   useEffect(() => {
     const newIntervalId = window.setInterval(() => {
+      if (infiniteDogs.length <= 10) {
+        getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
+          const temp = infiniteDogs.concat(dogs);
+          setInfiniteDogs(temp);
+        });
+      }
       if (paradeDogs.length <= 0) {
         return;
       }
       const tempArray = paradeDogs.slice();
 
-      if (paradeDogs.length < 5) {
+      if (paradeDogs.length < 6) {
         const dog = infiniteDogs.pop();
         setInfiniteDogs(infiniteDogs);
         if (!dog) {
