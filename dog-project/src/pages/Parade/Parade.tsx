@@ -15,8 +15,7 @@ const Parade: FC<ParadeProps> = () => {
   const { width, height } = useWindowDimensions();
 
   const moveVerticallyAcrossTheScreen = (paradeDog: ParadeDog) => {
-    paradeDog.x += 5;
-    // paradeDog.y += 1;
+    paradeDog.x += paradeDog.speed;
   };
 
   const isOffScreen = (paradeDog: ParadeDog) => {
@@ -27,26 +26,31 @@ const Parade: FC<ParadeProps> = () => {
   };
 
   useEffect(() => {
-    const tempArray: ParadeDog[] = [];
-    infiniteDogs.forEach((dog) => {
-      const randomX = Math.random() * -width;
-      const randomY = Math.random() * (height + 50);
-
-      tempArray.push({
-        x: randomX,
-        y: randomY,
-        movementFunction: moveVerticallyAcrossTheScreen,
-        dog: dog
-      });
-    });
-    setParadeDogs(tempArray);
-  }, [infiniteDogs]);
-
-  useEffect(() => {
     getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
       setInfiniteDogs(dogs);
     });
   }, []);
+
+  useEffect(() => {
+    if (paradeDogs.length < 1) {
+      const dog = infiniteDogs.pop();
+      if (!dog) {
+        return;
+      }
+      setInfiniteDogs(infiniteDogs);
+      const tempArray: ParadeDog[] = paradeDogs.slice();
+      const randomX = Math.random() * -width;
+      const randomY = Math.random() * (height - 100);
+      tempArray.push({
+        x: randomX,
+        y: randomY,
+        speed: Math.random() * 2,
+        movementFunction: moveVerticallyAcrossTheScreen,
+        dog: dog
+      });
+      setParadeDogs(tempArray);
+    }
+  }, [infiniteDogs]);
 
   useEffect(() => {
     const newIntervalId = window.setInterval(() => {
@@ -54,10 +58,29 @@ const Parade: FC<ParadeProps> = () => {
         return;
       }
       const tempArray = paradeDogs.slice();
+
+      if (paradeDogs.length < 5) {
+        const dog = infiniteDogs.pop();
+        setInfiniteDogs(infiniteDogs);
+        if (!dog) {
+          return;
+        }
+        const randomX = Math.random() * -width;
+        const randomY = Math.random() * (height - 100);
+        tempArray.push({
+          x: randomX,
+          y: randomY,
+          speed: Math.random() * 2,
+          movementFunction: moveVerticallyAcrossTheScreen,
+          dog: dog
+        });
+      }
+
       tempArray.forEach((paradeDog, index) => {
         paradeDog.movementFunction(paradeDog);
         if (isOffScreen(paradeDog)) {
           tempArray.splice(index, 1);
+          console.log(infiniteDogs.length);
         }
       });
       setParadeDogs(tempArray);
