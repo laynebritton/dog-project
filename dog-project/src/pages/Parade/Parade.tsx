@@ -25,6 +25,19 @@ const Parade: FC<ParadeProps> = () => {
     return false;
   };
 
+  const createParadeDog = (dog: Dog): ParadeDog => {
+    const randomX = Math.random() * -width;
+    const randomY = Math.random() * (height - 100);
+    const paradeDog = {
+      x: randomX,
+      y: randomY,
+      speed: Math.random() * 2,
+      movementFunction: moveVerticallyAcrossTheScreen,
+      dog: dog
+    };
+    return paradeDog;
+  };
+
   useEffect(() => {
     getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
       setInfiniteDogs(dogs);
@@ -39,15 +52,7 @@ const Parade: FC<ParadeProps> = () => {
       }
       setInfiniteDogs(infiniteDogs);
       const tempArray: ParadeDog[] = paradeDogs.slice();
-      const randomX = Math.random() * -width;
-      const randomY = Math.random() * (height - 100);
-      tempArray.push({
-        x: randomX,
-        y: randomY,
-        speed: Math.random() * 2,
-        movementFunction: moveVerticallyAcrossTheScreen,
-        dog: dog
-      });
+      tempArray.push(createParadeDog(dog));
       setParadeDogs(tempArray);
     }
   }, [infiniteDogs]);
@@ -71,22 +76,13 @@ const Parade: FC<ParadeProps> = () => {
         if (!dog) {
           return;
         }
-        const randomX = Math.random() * -width;
-        const randomY = Math.random() * (height - 100);
-        tempArray.push({
-          x: randomX,
-          y: randomY,
-          speed: Math.random() * 2,
-          movementFunction: moveVerticallyAcrossTheScreen,
-          dog: dog
-        });
+        tempArray.push(createParadeDog(dog));
       }
 
       tempArray.forEach((paradeDog, index) => {
         paradeDog.movementFunction(paradeDog);
         if (isOffScreen(paradeDog)) {
           tempArray.splice(index, 1);
-          console.log(infiniteDogs.length);
         }
       });
       setParadeDogs(tempArray);
