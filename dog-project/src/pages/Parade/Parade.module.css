@@ -1,0 +1,13 @@
+.Parade {
+  color: #ffffff;
+}
+
+.parade_body {
+  position: relative;
+  overflow: hidden;
+}
+
+.parade_animal {
+  position: absolute;
+  width: 30%;
+}
