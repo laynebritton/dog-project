@@ -46,6 +46,15 @@ const Parade: FC<ParadeProps> = () => {
     return dog;
   };
 
+  const loadMoreDogsIfStackIsLow = () => {
+    if (infiniteDogs.length <= MINIMUM_DOGS_NEEDED_TO_LOAD_MORE) {
+      getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
+        const temp = infiniteDogs.concat(dogs);
+        setInfiniteDogs(temp);
+      });
+    }
+  };
+
   useEffect(() => {
     getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
       setInfiniteDogs(dogs);
@@ -53,6 +62,7 @@ const Parade: FC<ParadeProps> = () => {
   }, []);
 
   useEffect(() => {
+    // Create first parade dog once dog data is loaded
     if (paradeDogs.length < 1) {
       const dog = getNextDogFromStack();
       if (!dog) {
@@ -66,12 +76,7 @@ const Parade: FC<ParadeProps> = () => {
 
   useEffect(() => {
     const newIntervalId = window.setInterval(() => {
-      if (infiniteDogs.length <= MINIMUM_DOGS_NEEDED_TO_LOAD_MORE) {
-        getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
-          const temp = infiniteDogs.concat(dogs);
-          setInfiniteDogs(temp);
-        });
-      }
+      loadMoreDogsIfStackIsLow();
       if (paradeDogs.length <= 0) {
         return;
       }
