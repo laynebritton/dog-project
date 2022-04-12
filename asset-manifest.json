@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dog-project/static/css/main.57fd3e33.css",
-    "main.js": "/dog-project/static/js/main.7c293364.js",
+    "main.css": "/dog-project/static/css/main.da787ae1.css",
+    "main.js": "/dog-project/static/js/main.4f77e4a4.js",
     "static/js/787.1b5779d6.chunk.js": "/dog-project/static/js/787.1b5779d6.chunk.js",
     "index.html": "/dog-project/index.html",
-    "main.57fd3e33.css.map": "/dog-project/static/css/main.57fd3e33.css.map",
-    "main.7c293364.js.map": "/dog-project/static/js/main.7c293364.js.map",
+    "main.da787ae1.css.map": "/dog-project/static/css/main.da787ae1.css.map",
+    "main.4f77e4a4.js.map": "/dog-project/static/js/main.4f77e4a4.js.map",
     "787.1b5779d6.chunk.js.map": "/dog-project/static/js/787.1b5779d6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.57fd3e33.css",
-    "static/js/main.7c293364.js"
+    "static/css/main.da787ae1.css",
+    "static/js/main.4f77e4a4.js"
   ]
 }
