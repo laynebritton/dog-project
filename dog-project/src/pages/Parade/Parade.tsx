@@ -55,6 +55,26 @@ const Parade: FC<ParadeProps> = () => {
     }
   };
 
+  const moveAllParadeDogs = (paradeDogs: ParadeDog[]) => {
+    paradeDogs.forEach((paradeDog, index) => {
+      paradeDog.movementFunction(paradeDog);
+      if (isOffScreen(paradeDog)) {
+        paradeDogs.splice(index, 1);
+      }
+    });
+    setParadeDogs(paradeDogs);
+  };
+
+  const createAndPushNewParadeDog = () => {
+    const dog = getNextDogFromStack();
+    if (!dog) {
+      return;
+    }
+    const tempArray = paradeDogs.slice();
+    tempArray.push(createParadeDog(dog));
+    setParadeDogs(tempArray);
+  };
+
   useEffect(() => {
     getRandomDogs(CONSTANTS.INFINITE_DOG_LOAD_COUNT).then((dogs) => {
       setInfiniteDogs(dogs);
@@ -64,13 +84,7 @@ const Parade: FC<ParadeProps> = () => {
   useEffect(() => {
     // Create first parade dog once dog data is loaded
     if (paradeDogs.length < 1) {
-      const dog = getNextDogFromStack();
-      if (!dog) {
-        return;
-      }
-      const tempArray = paradeDogs.slice();
-      tempArray.push(createParadeDog(dog));
-      setParadeDogs(tempArray);
+      createAndPushNewParadeDog();
     }
   }, [infiniteDogs]);
 
@@ -80,6 +94,7 @@ const Parade: FC<ParadeProps> = () => {
       if (paradeDogs.length <= 0) {
         return;
       }
+
       const tempArray = paradeDogs.slice();
 
       if (paradeDogs.length < MAX_PARADE_DOGS_ON_SCREEN_AT_ONCE) {
@@ -89,14 +104,7 @@ const Parade: FC<ParadeProps> = () => {
         }
         tempArray.push(createParadeDog(dog));
       }
-
-      tempArray.forEach((paradeDog, index) => {
-        paradeDog.movementFunction(paradeDog);
-        if (isOffScreen(paradeDog)) {
-          tempArray.splice(index, 1);
-        }
-      });
-      setParadeDogs(tempArray);
+      moveAllParadeDogs(tempArray);
     }, 4);
 
     return () => clearInterval(newIntervalId);
