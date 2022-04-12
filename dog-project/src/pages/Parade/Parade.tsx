@@ -26,10 +26,9 @@ const Parade: FC<ParadeProps> = () => {
   };
 
   const createParadeDog = (dog: Dog): ParadeDog => {
-    const randomX = Math.random() * -width;
     const randomY = Math.random() * (height - 100);
     const paradeDog = {
-      x: randomX,
+      x: -width / 2,
       y: randomY,
       speed: Math.random() * 2,
       movementFunction: moveVerticallyAcrossTheScreen,
