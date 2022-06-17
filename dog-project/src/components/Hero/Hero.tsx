@@ -18,7 +18,8 @@ const Hero: FC<HeroProps> = () => (
           justifyContent: 'center',
           alignItems: 'center',
           flexFlow: 'wrap',
-          flexWrap: 'wrap'
+          flexWrap: 'wrap',
+          textAlign: 'center'
         }}
       >
         <h1 style={{ fontSize: '10vh', color: '#FFF' }}>Infinite Dogs </h1>
