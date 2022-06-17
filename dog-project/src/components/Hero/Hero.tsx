@@ -24,9 +24,8 @@ const Hero: FC<HeroProps> = () => (
       >
         <h1 style={{ fontSize: '10vh', color: '#FFF' }}>Infinite Dogs </h1>
         <div style={{ display: 'block', width: '100%', height: '0' }} />
-        <p style={{ fontSize: '2rem', color: '#FFF' }}>
-          Scroll to find dogs. Better than doom-scrolling.
-        </p>
+        <p style={{ fontSize: '2rem', color: '#FFF' }}>Scroll for more dogs.</p>
+        <div style={{ display: 'block', width: '100%', height: '0' }} />
       </div>
     </div>
   </>
